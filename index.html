@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background: linear-gradient(135deg, #f0f2f5, #dce3f7);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -21,23 +21,32 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       text-align: center;
       width: 320px;
+      border-top: 4px solid #b80000; /* accent line */
     }
     .logo {
-      width: 120px;
-      margin-bottom: 20px;
-      border-radius: 50%; /* makes the logo circular */
+      width: 100px;
+      margin-bottom: 15px;
+      border-radius: 50%;
       background: #fff;
-      padding: 8px;
+      padding: 6px;
     }
     h2 {
-      margin-bottom: 20px;
+      margin: 10px 0 20px;
       color: #333;
+      font-size: 20px;
+    }
+    label {
+      display: block;
+      text-align: left;
+      font-size: 13px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: #444;
     }
     input[type="text"],
     input[type="password"] {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
+      padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 14px;
@@ -45,6 +54,7 @@
     button {
       width: 100%;
       padding: 12px;
+      margin-top: 15px;
       background-color: #b80000;
       color: white;
       border: none;
@@ -56,24 +66,46 @@
     button:hover {
       background-color: #800000;
     }
-    .footer-text {
-      margin-top: 15px;
+    .links {
+      margin-top: 12px;
       font-size: 12px;
+    }
+    .links a {
+      color: #b80000;
+      text-decoration: none;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .footer-text {
+      margin-top: 20px;
+      font-size: 11px;
       color: #777;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
   <div class="login-container">
-    <!-- Make sure logo.png is in the same folder as index.html -->
-    <img src="logo.jpg" alt="College Logo" class="logo" />
-    <h2>Login</h2>
+    <!-- Ensure logo.png is in the same folder -->
+    <img src="logo.png" alt="College Logo" class="logo" />
+    <h2>🔒 Secure Login</h2>
     <form>
-      <input type="text" placeholder="Username" required />
-      <input type="password" placeholder="Password" required />
+      <label for="username">Username</label>
+      <input id="username" type="text" placeholder="Enter username" required />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" placeholder="Enter password" required />
+
       <button type="submit">Login</button>
     </form>
-    <p class="footer-text">Adhiparasakthi Engineering College</p>
+    <div class="links">
+      <a href="#">Forgot Password?</a>
+    </div>
+    <p class="footer-text">
+      &copy; 2025 Adhiparasakthi Engineering College <br>
+      All Rights Reserved
+    </p>
   </div>
 </body>
 </html>
